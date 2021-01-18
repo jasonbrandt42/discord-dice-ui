@@ -3,20 +3,20 @@ import classNames from 'classnames';
 import Button from 'react-bootstrap/Button';
 import PoolBuilderContainer from '../PoolBuilder/PoolBuilderContainer';
 import { PoolType } from '../PoolBuilderModal/PoolBuilderModalTypes';
-import l5rStyles from '../ResultsModal/L5rResultsModal.module.css';
+import l5rStyles from '../ResultsModal/L5rResultsModal/L5rResultsModal.module.css';
 import poolBuilderStyles from '../PoolBuilder/PoolBuilder.module.css';
 
-function L5r1eDicePoolBuilder({
+function RollAndKeepPoolBuilder({
 	submitRoll,
-	l5rSendState
+	rollAndKeepSendState
 }: any ) {
 	const handleSubmit = (pool: PoolType) => {
 		submitRoll({ pool })
-		l5rSendState();
+		// rollAndKeepSendState();
 	};
 
-	const formName = 'l5r-1e-pool-builder-form';
-	const maxDicePool = 20;
+	const formName = 'roll-and-kepp-pool-builder-form';
+	const maxDicePool = 10;
 
 	return (
 		<div className={classNames({
@@ -40,4 +40,4 @@ function L5r1eDicePoolBuilder({
 	);
 }
 
-export default L5r1eDicePoolBuilder;
+export default RollAndKeepPoolBuilder;

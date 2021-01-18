@@ -4,7 +4,7 @@ import diceSelected from './diceSelectedReducer';
 import warhammerSlMode from './warhammerSlModeReducer';
 import modalsState from './modalsReducer';
 import msg from './msgReducer';
-import l5r1eData from './l5r1eReducer';
+import rollAndKeepData from './rollAndKeepReducer';
 import l5rData from './l5rReducer';
 import conanData from './conanReducer';
 import narrativeDiceData from './narrativeDicereducer';
@@ -19,7 +19,7 @@ export default combineReducers({
 	modalsState,
 	form,
 	msg,
-	l5r1eData,
+	rollAndKeepData,
 	l5rData,
 	conanData,
 	narrativeDiceData,

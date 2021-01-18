@@ -1,0 +1,100 @@
+.header {
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 1px;
+}
+
+.results {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 10px;
+	margin-top: 2px;
+	border-bottom: 1px dashed gray;
+}
+
+.resultsRow {
+	display: flex;
+	margin-bottom: 8px;
+	margin-left: 15px;
+	cursor: pointer;
+	opacity: .9;
+	transition: .1s;
+}
+
+.resultsRow:hover {
+	opacity: 1;
+}
+
+.resultsBlock {
+	display: flex;
+}
+
+.sum {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	font-weight: bold;
+	font-size: 21px;
+}
+
+.arrowIconContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.equalsContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 15px;
+}
+
+.equalsIcon,
+.arrowIcon {
+	font-size: 18px;
+}
+
+.imgContainer {
+	position: relative;
+	display: inline-block;
+}
+
+.img {
+	width: 60px;
+	height: auto;
+	padding: 0;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+.imgResult {
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	margin: auto;
+	width: 20px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+
+}
+
+.selected {
+	opacity: 1;
+	background-color: rgb(255 255 0 / 75%);
+	box-shadow: 0 0 10px 2px yellow;
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: center;
+}
