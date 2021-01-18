@@ -10,12 +10,12 @@ function RollAndKeepPoolBuilder({
 	submitRoll,
 	rollAndKeepSendState
 }: any ) {
-	const handleSubmit = (pool: PoolType) => {
-		submitRoll({ pool })
+	const handleSubmit = (pool: PoolType, modifier: string) => {
+		submitRoll({ pool, modifier })
 		// rollAndKeepSendState();
 	};
 
-	const formName = 'roll-and-kepp-pool-builder-form';
+	const formName = 'roll-and-keep-pool-builder-form';
 	const maxDicePool = 10;
 
 	return (

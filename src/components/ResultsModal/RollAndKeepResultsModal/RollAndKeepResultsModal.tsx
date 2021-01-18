@@ -7,30 +7,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20, faArrowRight, faEquals } from '@fortawesome/free-solid-svg-icons';
 import TooltipWrapper from '../../InfoTooltip/TooltipWrapper';
 import rollAndKeepStyles from './RollAndKeepResultsModal.module.css';
+import CodeSpan from '../../CodeSpan/CodeSpan';
 
 function RollAndKeepResultsModal({
 	hideMsg,
 	rerollCount,
 	keepDice,
+	modifier,
 	requestrollAndKeepReroll,
 	rollAndKeepClearData,
 	rollAndKeepSendState,
 
 	showModal,
-	results,
-	resultsKept,
-	resultsKeptIndexesAltered,
-	resultsKeptIndexesExploded,
-	resultsDerived,
-
-	additionalDiceRolled,
-	additionalDiceIndexesKept,
-	additionalDiceIndexesDropped,
-	additionalDiceIndexesExploded
+	results
 }: any) {
 	const [selectedDiceState, setSelectedDiceState] = useState<any>([]);
 	const [isModifyingAllowed, setIsModifyingAllowed] = useState<boolean>(true);
-
+	console.log('modifier, modifier', modifier);
 	useEffect(() => {
 		setSelectedDiceState([]);
 		setIsModifyingAllowed(true);
@@ -103,8 +96,6 @@ function RollAndKeepResultsModal({
 					resultsInner.map((result: number, index: number) => {
 						const showResult = result === 10 ? 0 : result;
 				
-						
-				
 						return (
 							<div className={rollAndKeepStyles.resultsBlock}>
 								<div className={rollAndKeepStyles.imgContainer}>
@@ -130,7 +121,15 @@ function RollAndKeepResultsModal({
 		);
 	});
 
-	const total = getTotal();
+	const total = getTotal() + modifier;
+	let modifierElem = null;
+
+	if (modifier !== 0) {
+		const modifierStr = modifier > 0 ? `+${modifier}` : `${modifier}`;
+		modifierElem = (
+			<div>(with <CodeSpan>{modifierStr}</CodeSpan> modifier)</div>
+		);
+	}
 
 	return (
 		<Modal
@@ -157,9 +156,7 @@ function RollAndKeepResultsModal({
 						<div className={rollAndKeepStyles.equalsContainer}>
 							<FontAwesomeIcon className={rollAndKeepStyles.equalsIcon} icon={faEquals} />
 						</div>
-						<div className={rollAndKeepStyles.total}>
-							{ total }
-						</div>
+						<div className={rollAndKeepStyles.total}>{ total }</div> { modifierElem }
 					</div>
 				</section>
 

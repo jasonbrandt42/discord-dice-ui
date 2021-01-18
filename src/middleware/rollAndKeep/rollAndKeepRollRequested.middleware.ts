@@ -4,7 +4,7 @@ import getResultsArray from '../../utils/getResultsArray';
 
 export default (store: any) => (next: any) => (action: any) => {
 	if (action.type === ROLL_AND_KEEP_ROLL_REQUESTED) {
-		const { pool } = action.payload;
+		const { pool, modifier } = action.payload;
 		const diceAmount = pool[D10];
 
 		const getResults = (results: number[] = []) => {
@@ -19,7 +19,10 @@ export default (store: any) => (next: any) => (action: any) => {
 		const results = new Array(diceAmount).fill('_').map(() => getResults());
 
 		if (results.length) {
-			store.dispatch(rollAndKeepDiceRolled(results));
+			store.dispatch(rollAndKeepDiceRolled({
+				results,
+				modifier: Number(modifier)
+			}));
 		}
 	}
 	next(action);

@@ -5,12 +5,11 @@ import { hideMsg } from '../../../actions/modals';
 import { rollAndKeepKeepDice } from '../../../actions/rollAndKeep.actions';
 import RollAndKeepResultsModal from './RollAndKeepResultsModal';
 
-
 const mapStateToProps = (state: any) => {
 	const { rollAndKeepData, rerollCount } = state;
 	return {
 		rollAndKeepData,
-		rerollCount,
+		rerollCount
 		// resultsDerived: getResultsDerivedSelector(state)
 	};
 };
@@ -25,16 +24,11 @@ const mapDispatchToProps = {
 
 function RollAndKeepResultsModalContainer({
 	hideMsg,
+	rollOptions,
 	rollAndKeepData: {
 		showModal,
 		results,
-		resultsKept,
-		resultsKeptIndexesAltered,
-		resultsKeptIndexesExploded,
-		additionalDiceRolled,
-		additionalDiceIndexesKept,
-		additionalDiceIndexesDropped,
-		additionalDiceIndexesExploded
+		modifier
 	},
 	rerollCount,
 	requestL5rReroll,
@@ -54,15 +48,7 @@ function RollAndKeepResultsModalContainer({
 
 			showModal={showModal}
 			results={results}
-			resultsKept={resultsKept}
-			resultsKeptIndexesAltered={resultsKeptIndexesAltered}
-			resultsKeptIndexesExploded={resultsKeptIndexesExploded}
-			resultsDerived={resultsDerived}
-
-			additionalDiceRolled={additionalDiceRolled}
-			additionalDiceIndexesKept={additionalDiceIndexesKept}
-			additionalDiceIndexesDropped={additionalDiceIndexesDropped}
-			additionalDiceIndexesExploded={additionalDiceIndexesExploded}
+			modifier={modifier}
 		/>
 	);
 }
