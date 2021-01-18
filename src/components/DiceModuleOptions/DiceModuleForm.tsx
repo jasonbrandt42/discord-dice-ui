@@ -22,6 +22,10 @@ const eoteModeLabel = (
 	<span>Narrative Dice</span>
 );
 
+const l5r1eModeLabel = (
+	<span>L5R 1e Dice <InfoTooltip content={tooltip.l5r1eTooltip} /></span>
+);
+
 const l5rModeLabel = (
 	<span>L5R 5e Dice</span>
 );
@@ -58,6 +62,7 @@ function DiceModuleForm({ rollOptions }:any) {
 		cocMode,
 		conanMode,
 		narrativeDice,
+		l5r1eMode,
 		l5rMode,
 		fateMode
 	} = rollOptions;
@@ -76,42 +81,49 @@ function DiceModuleForm({ rollOptions }:any) {
 				id="cocMode"
 				label={cocModeLabel}
 				component={RenderCheckbox}
-				disabled={warhammerMode || conanMode || narrativeDice || l5rMode || fateMode }
+				disabled={warhammerMode || conanMode || narrativeDice || l5rMode || fateMode || l5r1eMode }
 			/>
 			<Field
 				name="warhammerMode"
 				id="warhammerMode"
 				label={warhammerModeLabel}
 				component={RenderCheckbox}
-				disabled={cocMode || conanMode || narrativeDice || l5rMode || fateMode }
+				disabled={cocMode || conanMode || narrativeDice || l5rMode || fateMode || l5r1eMode }
 			/>
 			<Field
 				name="conanMode"
 				id="conanMode"
 				label={conanModeLabel}
 				component={RenderCheckbox}
-				disabled={cocMode || warhammerMode || narrativeDice || l5rMode || fateMode }
+				disabled={cocMode || warhammerMode || narrativeDice || l5rMode || fateMode || l5r1eMode }
 			/>
 			<Field
 				name="narrativeDice"
 				id="narrativeDice"
 				label={eoteModeLabel}
 				component={RenderCheckbox}
-				disabled={cocMode || conanMode || warhammerMode || l5rMode || fateMode }
+				disabled={cocMode || conanMode || warhammerMode || l5rMode || fateMode || l5r1eMode }
+			/>
+			<Field
+				name="l5r1eMode"
+				id="l5r1eMode"
+				label={l5r1eModeLabel}
+				component={RenderCheckbox}
+				disabled={cocMode || conanMode || warhammerMode || narrativeDice || fateMode || l5rMode}
 			/>
 			<Field
 				name="l5rMode"
 				id="l5rMode"
 				label={l5rModeLabel}
 				component={RenderCheckbox}
-				disabled={cocMode || conanMode || warhammerMode || narrativeDice || fateMode }
+				disabled={cocMode || conanMode || warhammerMode || narrativeDice || fateMode || l5r1eMode }
 			/>
 			<Field
 				name="fateMode"
 				id="fateMode"
 				label={fateLabel}
 				component={RenderCheckbox}
-				disabled={cocMode || conanMode || warhammerMode || narrativeDice}
+				disabled={cocMode || conanMode || warhammerMode || narrativeDice || l5rMode || l5r1eMode }
 			/>
 		</Form>
 	);
@@ -133,6 +145,7 @@ export default connect(state => ({
 		'warhammerMode',
 		'conanMode',
 		'narrativeDice',
+		'l5r1eMode',
 		'l5rMode',
 		'fateMode'
 	)
