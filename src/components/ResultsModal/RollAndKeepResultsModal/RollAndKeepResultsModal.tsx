@@ -153,7 +153,7 @@ function RollAndKeepResultsModal({
 					<div className={rollAndKeepStyles.results}>
 						{ resultsElements }
 					</div>
-					<div>
+					<div className={rollAndKeepStyles.equalsRow}>
 						<div className={rollAndKeepStyles.equalsContainer}>
 							<FontAwesomeIcon className={rollAndKeepStyles.equalsIcon} icon={faEquals} />
 						</div>
@@ -166,7 +166,7 @@ function RollAndKeepResultsModal({
 				<section>
 					<div className={rollAndKeepStyles.buttonContainer}>
 							<Button
-								disabled={!selectedDiceState.length || rerollCount > 0}
+								disabled={selectedDiceState.length}
 								variant="outline-info"
 								onClick={handleReroll}
 							>Reroll all dice</Button>

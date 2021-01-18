@@ -10,7 +10,7 @@
 	flex-direction: column;
 	justify-content: center;
 	margin-bottom: 10px;
-	margin-top: 2px;
+	margin-top: 10px;
 	border-bottom: 1px dashed gray;
 }
 
@@ -31,13 +31,22 @@
 	display: flex;
 }
 
+.equalsRow {
+	display: flex;
+}
+
+.total,
 .sum {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 30px;
-	font-weight: bold;
+	width: 40px;
 	font-size: 21px;
+	z-index: 9;
+}
+
+.total {
+	font-weight: bold;
 }
 
 .arrowIconContainer {
@@ -55,12 +64,13 @@
 
 .equalsIcon,
 .arrowIcon {
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .imgContainer {
 	position: relative;
 	display: inline-block;
+	z-index: 9;
 }
 
 .img {
@@ -84,17 +94,32 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	pointer-events: none;
-
 }
 
 .selected {
+	position: relative;
 	opacity: 1;
+}
+
+.selected:after {
+	position: absolute;
+	content: '';
+	display: block;
+	width: 100%;
+	top: 16px;
+	left: -7px;
 	background-color: rgb(255 255 0 / 75%);
-	box-shadow: 0 0 10px 2px yellow;
+	box-shadow: 0 0 18px 8px yellow;
+	height: 13px;
+	z-index: 1;
+}
+
+.selected .sum {
+	font-weight: bold;;
 }
 
 .buttonContainer {
+	margin-top: 15px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 }
