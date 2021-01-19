@@ -14,33 +14,23 @@ function RollAndKeepResultsModal({
 	rerollCount,
 	keepDice,
 	modifier,
-	requestrollAndKeepReroll,
+	requestRollAndKeepReroll,
 	rollAndKeepClearData,
-	rollAndKeepSendState,
-
 	showModal,
 	results
 }: any) {
 	const [selectedDiceState, setSelectedDiceState] = useState<any>([]);
-	const [isModifyingAllowed, setIsModifyingAllowed] = useState<boolean>(true);
-	console.log('modifier, modifier', modifier);
+
 	useEffect(() => {
 		setSelectedDiceState([]);
-		setIsModifyingAllowed(true);
 
 		if (!showModal) {
-			// rollAndKeepClearData();
+			rollAndKeepClearData();
 		}
 	}, [showModal, rollAndKeepClearData]);
 
 
 	const DiceIcon = <FontAwesomeIcon className={styles.resultsModalDiceIcon} icon={faDiceD20} />;
-
-	// const resultsElements: Array<JSX.Element> = [];
-	// const resultsKeptElements: Array<JSX.Element> = [];
-	// const additionalDiceRolledElements: Array<JSX.Element> = [];
-
-	console.log('results', results);
 
 	const selectDie = (rowIndex: number) => {
 		setSelectedDiceState([
@@ -56,15 +46,16 @@ function RollAndKeepResultsModal({
 	};
 	
 	const handleReroll = () => {
-		// requestL5rReroll(selectedDiceState);
-		// setSelectedDiceState([]);
-		// l5rSendState();
+		hideMsg();
+		setSelectedDiceState([]);
+		setTimeout(() => {
+			requestRollAndKeepReroll();
+		}, 500);
 	};
 
 	const handleKeepDice = () => {
 		keepDice(selectedDiceState);
 		setSelectedDiceState([]);
-		rollAndKeepSendState();
 	};
 
 	const getTotal = () => {
@@ -142,10 +133,7 @@ function RollAndKeepResultsModal({
 					<Modal.Title className={styles.resultsModalTitle}>Roll Results</Modal.Title>
 				</div>
 			</Modal.Header>
-			<Modal.Body className={classNames({
-				[styles.resultsBody]: true,
-				// [rollAndKeepStyles.resultsBody]: true
-			})}>
+			<Modal.Body className={styles.resultsBody}>
 
 				<section>
 					<h4 className={rollAndKeepStyles.header}>Select the dice to keep:</h4>

@@ -37,6 +37,7 @@ import l5rSendState from './middleware/l5r/l5rSendState.middleware';
 
 // Roll and Keep
 import rollAndKeepRollRequested from './middleware/rollAndKeep/rollAndKeepRollRequested.middleware';
+import rollAndKeepRerollRequested from './middleware/rollAndKeep/rollAndKeepRerollRequested.middleware';
 import rollAndKeepKeepDice from './middleware/rollAndKeep/rollAndKeepKeepDice.middleware';
 
 import sendRequestMsg from './middleware/sendRequestMsg.middleware';
@@ -63,6 +64,7 @@ const rollMiddleware = [
 	l5rSendState,
 
 	rollAndKeepRollRequested,
+	rollAndKeepRerollRequested,
 	rollAndKeepKeepDice,
 
 	getRequestMsg,

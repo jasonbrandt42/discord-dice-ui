@@ -1,26 +1,32 @@
 import { CLOSE_MSG_MODAL } from '../actions/modals';
 import {
 	ROLL_AND_KEEP_DICE_ROLLED,
-	ROLL_AND_KEEP_DICE_REROLLED,
+	ROLL_AND_KEEP_REROLL_REQUESTED,
 	ROLL_AND_KEEP_CLEAR_DATA
 } from '../actions/rollAndKeep.actions';
 
 const initialState: any = {
 	showModal: false,
 	results: [],
-	modifier: 0
+	modifier: 0,
+	rerollCount: 0
 };
 
 export default (state = initialState, action: any) => {
 	switch (action.type) {
-		case ROLL_AND_KEEP_DICE_ROLLED:
-		case ROLL_AND_KEEP_DICE_REROLLED: {
+		case ROLL_AND_KEEP_DICE_ROLLED: {
 			const { results, modifier } = action.payload;
 			return {
 				...state,
 				results,
 				modifier,
 				showModal: true
+			};
+		}
+		case ROLL_AND_KEEP_REROLL_REQUESTED : {
+			return {
+				...state,
+				rerollCount: state.rerollCount + 1
 			};
 		}
 		case CLOSE_MSG_MODAL: {
@@ -33,7 +39,8 @@ export default (state = initialState, action: any) => {
 			return {
 				...state,
 				results: [],
-				modifier: 0
+				modifier: 0,
+				rerollCount: 0
 			};
 		}
 	}
