@@ -75,6 +75,7 @@ function DiceModuleForm({ rollOptions }:any) {
 				id="useModifier"
 				label="Add modifier"
 				component={RenderCheckbox}
+				disabled={ narrativeDice || rollAndKeepMode }
 			/>
 			<Field
 				name="cocMode"

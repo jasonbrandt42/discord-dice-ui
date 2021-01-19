@@ -15,7 +15,6 @@ function RollAndKeepResultsModal({
 	keepDice,
 	modifier,
 	requestRollAndKeepReroll,
-	rollAndKeepClearData,
 	showModal,
 	results
 }: any) {
@@ -23,12 +22,7 @@ function RollAndKeepResultsModal({
 
 	useEffect(() => {
 		setSelectedDiceState([]);
-
-		if (!showModal) {
-			rollAndKeepClearData();
-		}
-	}, [showModal, rollAndKeepClearData]);
-
+	}, [showModal]);
 
 	const DiceIcon = <FontAwesomeIcon className={styles.resultsModalDiceIcon} icon={faDiceD20} />;
 
@@ -77,6 +71,7 @@ function RollAndKeepResultsModal({
 
 		return (
 			<div
+				key={`row-index-${rowIndex}`}
 				className={resultsRowClassNames}
 				onClick={() => handleClick(rowIndex)}
 			>
@@ -88,7 +83,7 @@ function RollAndKeepResultsModal({
 						const showResult = result === 10 ? 0 : result;
 				
 						return (
-							<div className={rollAndKeepStyles.resultsBlock}>
+							<div key={`row-index-${index}`} className={rollAndKeepStyles.resultsBlock}>
 								<div className={rollAndKeepStyles.imgContainer}>
 									<img
 										className={rollAndKeepStyles.img}
@@ -137,6 +132,10 @@ function RollAndKeepResultsModal({
 
 				<section>
 					<h4 className={rollAndKeepStyles.header}>Select the dice to keep:</h4>
+					<h3 className={classNames({
+						[rollAndKeepStyles.rerolledHeader]: true,
+						hidden: !rerollCount || rerollCount <= 0
+						})}>Rerolled <CodeSpan>{rerollCount}</CodeSpan> {rerollCount === 1 ? 'time' : 'times'}</h3>
 					<div className={rollAndKeepStyles.results}>
 						{ resultsElements }
 					</div>

@@ -1,23 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { getResultsDerivedSelector } from '../../../selectors/l5rSelectors';
 import { hideMsg } from '../../../actions/modals';
-import {
-	rollAndKeepKeepDice,
-	requestRollAndKeepReroll,
-	rollAndKeepClearData } from '../../../actions/rollAndKeep.actions';
+import { rollAndKeepKeepDice, requestRollAndKeepReroll } from '../../../actions/rollAndKeep.actions';
 import RollAndKeepResultsModal from './RollAndKeepResultsModal';
 
 const mapStateToProps = (state: any) => {
-	const { rollAndKeepData } = state;
-	return { rollAndKeepData };
+	const { rollAndKeepData, rerollCount } = state;
+	return {
+		rollAndKeepData,
+		rerollCount
+	};
 };
 
 const mapDispatchToProps = {
 	hideMsg,
 	requestRollAndKeepReroll,
-	rollAndKeepKeepDice,
-	rollAndKeepClearData
+	rollAndKeepKeepDice
 };
 
 function RollAndKeepResultsModalContainer({
@@ -25,12 +23,11 @@ function RollAndKeepResultsModalContainer({
 	rollAndKeepData: {
 		showModal,
 		results,
-		rerollCount,
 		modifier
 	},
+	rerollCount,
 	requestRollAndKeepReroll,
-	rollAndKeepKeepDice,
-	rollAndKeepClearData
+	rollAndKeepKeepDice
 }: any) {
 	return (
 		<RollAndKeepResultsModal
@@ -39,7 +36,6 @@ function RollAndKeepResultsModalContainer({
 			rerollCount={rerollCount}
 			keepDice={rollAndKeepKeepDice}
 			requestRollAndKeepReroll={requestRollAndKeepReroll}
-			rollAndKeepClearData={rollAndKeepClearData}
 			results={results}
 			modifier={modifier}
 		/>
