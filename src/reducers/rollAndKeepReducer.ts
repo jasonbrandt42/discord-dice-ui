@@ -1,8 +1,5 @@
 import { CLOSE_MSG_MODAL } from '../actions/modals';
-import {
-	ROLL_AND_KEEP_DICE_ROLLED,
-	ROLL_AND_KEEP_CLEAR_DATA
-} from '../actions/rollAndKeep.actions';
+import { ROLL_AND_KEEP_DICE_ROLLED } from '../actions/rollAndKeep.actions';
 
 const initialState: any = {
 	showModal: false,
@@ -11,7 +8,6 @@ const initialState: any = {
 };
 
 export default (state = initialState, action: any) => {
-	console.log(action.type);
 	switch (action.type) {
 		case ROLL_AND_KEEP_DICE_ROLLED: {
 			const { results, modifier } = action.payload;
@@ -26,13 +22,6 @@ export default (state = initialState, action: any) => {
 			return {
 				...state,
 				showModal: false
-			};
-		}
-		case ROLL_AND_KEEP_CLEAR_DATA: {
-			return {
-				...state,
-				results: [],
-				modifier: 0
 			};
 		}
 	}

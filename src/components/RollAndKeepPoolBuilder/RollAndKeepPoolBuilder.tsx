@@ -6,13 +6,9 @@ import { PoolType } from '../PoolBuilderModal/PoolBuilderModalTypes';
 import l5rStyles from '../ResultsModal/L5rResultsModal/L5rResultsModal.module.css';
 import poolBuilderStyles from '../PoolBuilder/PoolBuilder.module.css';
 
-function RollAndKeepPoolBuilder({
-	submitRoll,
-	rollAndKeepSendState
-}: any ) {
+function RollAndKeepPoolBuilder({ submitRoll }: any) {
 	const handleSubmit = (pool: PoolType, modifier: string) => {
 		submitRoll({ pool, modifier })
-		// rollAndKeepSendState();
 	};
 
 	const formName = 'roll-and-keep-pool-builder-form';

@@ -131,11 +131,11 @@ function RollAndKeepResultsModal({
 			<Modal.Body className={styles.resultsBody}>
 
 				<section>
-					<h4 className={rollAndKeepStyles.header}>Select the dice to keep:</h4>
 					<h3 className={classNames({
 						[rollAndKeepStyles.rerolledHeader]: true,
 						hidden: !rerollCount || rerollCount <= 0
 						})}>Rerolled <CodeSpan>{rerollCount}</CodeSpan> {rerollCount === 1 ? 'time' : 'times'}</h3>
+					<h4 className={rollAndKeepStyles.header}>Select the dice to keep:</h4>
 					<div className={rollAndKeepStyles.results}>
 						{ resultsElements }
 					</div>

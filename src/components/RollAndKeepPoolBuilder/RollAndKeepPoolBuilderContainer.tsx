@@ -1,22 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitRoll } from '../../actions/roll.actions';
-import { rollAndKeepSendState } from '../../actions/rollAndKeep.actions';
 import RollAndKeepPoolBuilder from './RollAndKeepPoolBuilder';
 
-const mapDispatchToProps = { submitRoll, rollAndKeepSendState };
+const mapDispatchToProps = { submitRoll };
 
 function RollAndKeepPoolBuilderContainer({
 	diceModuleForm,
-	submitRoll,
-	rollAndKeepSendState
+	submitRoll
 }: any ) {
 	const rollOptions = diceModuleForm?.values || {};
 	return (
 		<RollAndKeepPoolBuilder
 			rollOptions={rollOptions}
 			submitRoll={submitRoll}
-			rollAndKeepSendState={rollAndKeepSendState}
 		/>
 	);
 }
