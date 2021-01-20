@@ -1,5 +1,5 @@
 import { CLOSE_MSG_MODAL } from '../actions/modals';
-import { ROLL_AND_KEEP_DICE_ROLLED } from '../actions/rollAndKeep.actions';
+import { ROLL_AND_KEEP_DICE_ROLLED, ROLL_AND_KEEP_RESULTS_KEPT } from '../actions/rollAndKeep.actions';
 
 const initialState: any = {
 	showModal: false,
@@ -23,6 +23,9 @@ export default (state = initialState, action: any) => {
 				...state,
 				showModal: false
 			};
+		}
+		case ROLL_AND_KEEP_RESULTS_KEPT: {
+			return { ...initialState };
 		}
 	}
 	return state;

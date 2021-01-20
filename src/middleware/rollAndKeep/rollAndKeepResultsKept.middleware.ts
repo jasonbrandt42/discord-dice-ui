@@ -45,7 +45,7 @@ export default (store: any) => (next: any) => (action: any) => {
 		let totalValue = `\`${total}\``;
 
 		if (modifier && Number(modifier)) {
-			totalValue += ` (with \`${modifierSign}${modifier}\`)`;
+			totalValue += ` (with \`${modifierSign}${modifier}\` modifier)`;
 		}
 
 		fields.push({
