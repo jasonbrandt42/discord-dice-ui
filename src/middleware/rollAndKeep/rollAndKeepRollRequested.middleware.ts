@@ -7,7 +7,7 @@ import joinAsBlocks from '../../utils/joinAsBlocks';
 
 export default (store: any) => (next: any) => (action: any) => {
 	if (action.type === ROLL_AND_KEEP_ROLL_REQUESTED) {
-		const { pool, modifier } = action.payload;
+		const { pool, modifier, isReroll } = action.payload;
 		const diceAmount = pool[D10];
 
 		const getResults = (results: number[] = []) => {
@@ -35,21 +35,22 @@ export default (store: any) => (next: any) => (action: any) => {
 
 			const fields = [];
 
-			if (modifier) {
-				const modifierIcon = modifier > 0 ? ':arrow_up:' : ':arrow_down:';
-				const modifierSign = modifier > 0 ? '+' : '';
+			if (modifier && Number(modifier)) {
+				const modifierIcon = Number(modifier) > 0 ? ':arrow_up:' : ':arrow_down:';
+				const modifierSign = Number(modifier) > 0 ? '+' : '';
 				fields.push({
 					name: `${modifierIcon} Modifier:`,
 					value: `\`${modifierSign}${modifier}\``
-				})
+				});
 			}
 
-			if (rerollCount) {
-				const rerollCountStr = rerollCount === 1 ? 'time' : 'times';
+			if (isReroll) {
+				const trueRerollCount = rerollCount + 1;
+				const rerollCountStr = trueRerollCount === 1 ? 'time' : 'times';
 				fields.push({
 					name: `:game_die: Reroll Count:`,
-					value: `The dice have been rerolled \`${rerollCount}\` ${rerollCountStr}.`
-				})
+					value: `The dice have been rerolled \`${trueRerollCount}\` ${rerollCountStr}.`
+				});
 			}
 
 			store.dispatch(requestMsgReady({
