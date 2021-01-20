@@ -48,7 +48,7 @@ function RollAndKeepResultsModal({
 	};
 
 	const handleKeepDice = () => {
-		keepDice(selectedDiceState);
+		keepDice({ indexesKept: selectedDiceState });
 		setSelectedDiceState([]);
 	};
 

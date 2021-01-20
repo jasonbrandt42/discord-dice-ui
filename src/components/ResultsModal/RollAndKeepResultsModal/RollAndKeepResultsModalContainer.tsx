@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hideMsg } from '../../../actions/modals';
-import { rollAndKeepKeepDice, requestRollAndKeepReroll } from '../../../actions/rollAndKeep.actions';
+import { keepDice, requestRollAndKeepReroll } from '../../../actions/rollAndKeep.actions';
 import RollAndKeepResultsModal from './RollAndKeepResultsModal';
 
 const mapStateToProps = (state: any) => {
@@ -15,7 +15,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = {
 	hideMsg,
 	requestRollAndKeepReroll,
-	rollAndKeepKeepDice
+	keepDice
 };
 
 function RollAndKeepResultsModalContainer({
@@ -27,14 +27,14 @@ function RollAndKeepResultsModalContainer({
 	},
 	rerollCount,
 	requestRollAndKeepReroll,
-	rollAndKeepKeepDice
+	keepDice
 }: any) {
 	return (
 		<RollAndKeepResultsModal
 			showModal={showModal}
 			hideMsg={hideMsg}
 			rerollCount={rerollCount}
-			keepDice={rollAndKeepKeepDice}
+			keepDice={keepDice}
 			requestRollAndKeepReroll={requestRollAndKeepReroll}
 			results={results}
 			modifier={modifier}

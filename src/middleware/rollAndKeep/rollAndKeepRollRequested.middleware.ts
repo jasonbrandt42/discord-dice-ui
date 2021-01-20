@@ -35,21 +35,21 @@ export default (store: any) => (next: any) => (action: any) => {
 
 			const fields = [];
 
-			if (modifier && Number(modifier)) {
-				const modifierIcon = Number(modifier) > 0 ? ':arrow_up:' : ':arrow_down:';
-				const modifierSign = Number(modifier) > 0 ? '+' : '';
-				fields.push({
-					name: `${modifierIcon} Modifier:`,
-					value: `\`${modifierSign}${modifier}\``
-				});
-			}
-
 			if (isReroll) {
 				const trueRerollCount = rerollCount + 1;
 				const rerollCountStr = trueRerollCount === 1 ? 'time' : 'times';
 				fields.push({
 					name: `:game_die: Reroll Count:`,
 					value: `The dice have been rerolled \`${trueRerollCount}\` ${rerollCountStr}.`
+				});
+			}
+
+			if (modifier && Number(modifier)) {
+				const modifierIcon = Number(modifier) > 0 ? ':arrow_up:' : ':arrow_down:';
+				const modifierSign = Number(modifier) > 0 ? '+' : '';
+				fields.push({
+					name: `${modifierIcon} Modifier:`,
+					value: `\`${modifierSign}${modifier}\``
 				});
 			}
 

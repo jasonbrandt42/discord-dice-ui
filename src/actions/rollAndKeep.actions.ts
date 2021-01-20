@@ -2,7 +2,7 @@ export const ROLL_AND_KEEP_REROLL_REQUESTED = 'ROLL_AND_KEEP_REROLL_REQUESTED';
 export const ROLL_AND_KEEP_DICE_REROLLED = 'ROLL_AND_KEEP_DICE_REROLLED';
 export const ROLL_AND_KEEP_ROLL_REQUESTED = 'ROLL_AND_KEEP_ROLL_REQUESTED';
 export const ROLL_AND_KEEP_DICE_ROLLED = 'ROLL_AND_KEEP_DICE_ROLLED';
-export const ROLL_AND_KEEP_KEEP_DICE = 'ROLL_AND_KEEP_KEEP_DICE';
+export const ROLL_AND_KEEP_RESULTS_KEPT = 'ROLL_AND_KEEP_RESULTS_KEPT';
 
 export function requestRollAndKeepRoll(payload: any) {
 	return {
@@ -32,9 +32,9 @@ export function rollAndKeepDiceRolled(payload: any) {
 	};
 }
 
-export function rollAndKeepKeepDice(payload: any) {
+export function keepDice(payload: any) {
 	return {
-		type: ROLL_AND_KEEP_KEEP_DICE, 
+		type: ROLL_AND_KEEP_RESULTS_KEPT, 
 		payload
 	};
 }
