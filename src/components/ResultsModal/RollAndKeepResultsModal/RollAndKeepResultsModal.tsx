@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import styles from '../ResultsModal.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiceD20, faArrowRight, faEquals } from '@fortawesome/free-solid-svg-icons';
-import TooltipWrapper from '../../InfoTooltip/TooltipWrapper';
 import rollAndKeepStyles from './RollAndKeepResultsModal.module.css';
 import CodeSpan from '../../CodeSpan/CodeSpan';
 
